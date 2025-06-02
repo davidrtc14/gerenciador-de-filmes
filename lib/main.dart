@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'views/home_view.dart';
 
 void main() {
-  runApp(const MainApp());
+  runApp(GerenciadorFilmesApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
+class GerenciadorFilmesApp extends StatelessWidget {
+  const GerenciadorFilmesApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Hello World!'),
-        ),
+    return MaterialApp(
+      title: 'Gerenciador de Filmes',
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        primarySwatch: Colors.deepPurple,
       ),
+      home: HomeView(),
     );
   }
 }
