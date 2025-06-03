@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import '../controllers/filme_controller.dart';
 import '../models/filme.dart';
+import 'add_edit_view.dart';
+import 'detalhe_view.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({super.key});
@@ -41,7 +43,10 @@ class _HomeViewState extends State<HomeView> {
     );
 
     if (result == 'detalhes') {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => DetalheView(filme: filme)));
     } else if (result == 'editar') {
+      Navigator.push(context, MaterialPageRoute(builder: (_) => AddEditView(filme: filme)))
+        .then((_) => _carregarFilmes());
     }
   }
 
@@ -57,12 +62,12 @@ class _HomeViewState extends State<HomeView> {
               context: context,
               applicationName: 'Gerenciador de Filmes',
               children: [
-                Text('Grupo:'),
-                Text('- David Ramalho'),
-                Text('- Gabriel Alves'),
-                Text('- Mayara Ferreira'),
-                Text('- Miguel Dantas'),
-              ],
+                  Text('Grupo:'),
+                  Text('- David Ramalho'),
+                  Text('- Gabriel Alves'),
+                  Text('- Mayara Ferreira'),
+                  Text('- Miguel Dantas'),
+                ],
             ),
           ),
         ],
@@ -98,7 +103,10 @@ class _HomeViewState extends State<HomeView> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(context, MaterialPageRoute(builder: (_) => AddEditView()))
+            .then((_) => _carregarFilmes());
+        },
         child: Icon(Icons.add),
       ),
     );
